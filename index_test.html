@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Henry Tasks
+        </title>
+        <script src="js/vue.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="app-vue">
+            <div>
+                <h4>
+                    v-if
+                </h4>
+                <div v-if="ifBoolean=false">
+                    Show v-if info
+                </div>
+                <div v-else-if="ifBoolean=true">
+                    No v-if info
+                </div>
+            </div>
+            <!-- {{text}} -->
+            <hr>
+
+            <div>
+                <h4>
+                    v-show
+                </h4>
+                <div v-show="showBoolean">
+                    Show v-show
+                </div>
+            </div>
+
+            <hr>
+            
+            <div>
+                <h4>
+                    v-for
+                </h4>
+                <ul>
+                    <li v-for="name in names">
+                        {{name}}
+                    </li>
+                </ul>
+            </div>
+
+            <hr>
+            
+            <div>
+                <h4>
+                    v-model
+                </h4>
+                <textarea name="v-model-test" id="v-model-test" cols="38" rows="10" v-model="message">
+                </textarea>
+                <p>
+                    {{message}}
+                </p>
+            </div>
+
+            <hr>
+            
+            <div>
+                <h4>
+                    v-on
+                </h4>
+                
+                <button @click="counter+=1">Add</button>
+                <button v-on:click="counter-=1">Subscribe</button>
+                <p>
+                    {{counter}}
+                </p>
+            </div>
+
+
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
