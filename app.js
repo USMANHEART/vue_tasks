@@ -13,6 +13,10 @@ new Vue({
             addTask: function()
             {
                 this.tasks.push(this.currentTask);
+            },
+            removeTask: function(index)
+            {
+                this.tasks.splice(index, 1);
             }
         }
 });

@@ -13,27 +13,31 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div id="app-vue" style="text-align: center;">
-            <hr>
+        <hr>
             Henry Task Manager
             <br>
             <hr>
-            <textarea 
-            name="v-model-task"
-            id="v-model-task"
-            v-model="currentTask"
-            style="width: 500px; height: 300px;"
-            >
-            <!-- v-on:keyup.enter="addTask" -->
-            </textarea>
-            <br>
-            <button @click="addTask">Add Task</button>
-            <br><br>
-            <ol style="text-align: left;">
-                <li v-for="task in tasks">
-                    {{task}}
-                </li>
-            </ol>
+        <div id="app-vue">            
+            <div class="henry_tasks">
+                <textarea 
+                name="v-model-task"
+                id="v-model-task"
+                v-model="currentTask"
+                >
+                <!-- v-on:keyup.enter="addTask" -->
+                </textarea>
+                <br>
+                <button @click="addTask">Add Task</button>
+                <br><br>
+                <ol>
+                    <li v-for="(task, index) in tasks">
+                        {{task}}
+                        <button class="btn btn-danger" @click="removeTask(index)">
+                            Remove
+                        </button>
+                    </li>
+                </ol>
+            </div>
         
         </div>
         <script src="app.js"></script>
