@@ -2,7 +2,15 @@
     display: flex;
     justify-content: center;
   }
-  
+  .heading{
+    text-align: center;
+    /* width: 600px; */
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #C5E0FF;
+  }
   .henry_tasks {
     width: 600px;
     border: 2px solid black;

@@ -13,7 +13,10 @@
     </head>
     <body>
         <hr>
+        <div class="heading">
             Henry Task Manager
+        </div>
+            
             <br>
             <hr>
         <div id="app-vue" class="henry_tasks_float">            
@@ -57,7 +60,22 @@
                     </li>
                 </ul>
                 <button @click="copyTasks">Copy All</button>
-            </div>    
+            </div>
+
+            <div class="henry_tasks">
+                <a>Translation:</a>
+                <br>
+                <ul>
+                    <li class="lst" v-for="(task, index) in transTasks">
+                        {{task}}
+                        <hr>
+                        <button class="btn btn-danger" @click="returnTask(index)">
+                            Revert
+                        </button>
+                    </li>
+                </ul>
+                <button @click="copyTransTasks">Copy Translation</button>
+            </div>
             
             
         </div>
