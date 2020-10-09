@@ -4,39 +4,28 @@ new Vue({
         data() {
             return {
                 tasks: [],
+                compTasks: [],
                 currentTask: ''
             }
         },
         methods: {
             addTask: function()
             {
-                // let post_data = {
-                //     src: "en",
-                //     dest: "zhCN",
-                //     text: this.currentTask,
-                //     email: "usmanheart@gmail.com",
-                //     password: "PAKINDIA",
-                //     premiumkey: null
-                // }
-                // axios.post("https://frengly.com/frengly/data/translateREST", post_data).
-                // then((response) => {
-                //     console.log(response.data.translation);
-                //     this.tasks.push(response.data.translation)
-                //   }
-                // );
-                let num = this.tasks.length + 1;
-                let task = num + "." + this.currentTask + "\n";
+                let task = this.currentTask;
                 this.tasks.push(task);
                 this.currentTask = '';
             },
             taskCompleted: function(index)
             {
-                if(!this.tasks[index].includes("completed\n"))
-                {
-                    let taskTmp = [...this.tasks];
-                    taskTmp[index] = this.tasks[index].split("\n")[0] + ", completed\n";
-                    this.tasks = taskTmp;
-                }                
+                let task = this.tasks[index];
+                this.tasks.splice(index, 1);
+                this.compTasks.push(task)
+            },
+            returnTask: function(index)
+            {
+                let task = this.compTasks[index];
+                this.tasks.push(task);
+                this.compTasks.splice(index, 1);
             },
             removeTask: function(index)
             {
@@ -45,15 +34,29 @@ new Vue({
             copyTasks: function()
             {
                 let el = document.createElement('textarea');
+                let count = 1;
                 el.value = '';
-                for (const task of this.tasks) {
-                    el.value += task;
+                
+                el.value = "Completed:\n";
+                for (const task of this.compTasks)
+                {
+                    el.value += (count +"." + task + ", completed\n");
+                    count++;
                 }
+
+                count = 1;
+                el.value += "Need to Complete:\n"
+                for (const task of this.tasks)
+                {
+                    el.value += (count +"." + task + "\n");
+                    count++;
+                }
+
                 document.body.appendChild(el);
                 el.select();
                 document.execCommand('copy');
                 document.body.removeChild(el);
-                console.log(el.value)
+                console.log(el.value);                
             }
         }
 });

@@ -16,7 +16,7 @@
             Henry Task Manager
             <br>
             <hr>
-        <div id="app-vue">            
+        <div id="app-vue" class="henry_tasks_float">            
             <div class="henry_tasks">
                 <!-- <textarea 
                 name="v-model-task"
@@ -30,8 +30,8 @@
                 <br>
                 <!-- <button @click="addTask">Add Task</button> -->
                 <br><br>
-                <ol class="a">
-                    <li v-for="(task, index) in tasks">
+                <ul>
+                    <li class="lst" v-for="(task, index) in tasks">
                         {{task}}
                         <hr>
                         <button class="btn btn-primary" @click="taskCompleted(index)">
@@ -41,10 +41,25 @@
                             Remove
                         </button>
                     </li>
-                </ol>
-                <button @click="copyTasks">Copy</button>
+                </ul>
             </div>
-        
+            
+            <div class="henry_tasks">
+                <a>Completed Tasks:</a>
+                <br>
+                <ul>
+                    <li class="lst" v-for="(task, index) in compTasks">
+                        {{task}}
+                        <hr>
+                        <button class="btn btn-danger" @click="returnTask(index)">
+                            Revert
+                        </button>
+                    </li>
+                </ul>
+                <button @click="copyTasks">Copy All</button>
+            </div>    
+            
+            
         </div>
         <script src="app.js"></script>
     </body>

@@ -5,11 +5,15 @@
   
   .henry_tasks {
     width: 600px;
-    border: 1px solid black;
+    border: 2px solid black;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    background: #FFEEE4;
+    padding: 10px;
+    background: #C5E0FF;
+  }
+  .henry_tasks_float {
+    float: center;
+    padding: 10px;
   }
   li
   {
@@ -18,9 +22,18 @@
     justify-content: space-between;
     align-items: center;
   }
-  /* .lst:before {
+  body 
+  {
+    counter-reset: section;
+  }
+  .lst 
+  {
+	  display: flex;
+  }
+  .lst:before 
+  {
     counter-increment: section;
     content: counter(section) ".";
     position: absolute;
     margin-left: -20px;
-} */
+  }
