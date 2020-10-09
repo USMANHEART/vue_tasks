@@ -24,7 +24,9 @@ new Vue({
                 //     this.tasks.push(response.data.translation)
                 //   }
                 // );
-                this.tasks.push(this.currentTask);
+                let num = this.tasks.length + 1;
+                let task = num + "." + this.currentTask + "\n";
+                this.tasks.push(task);
                 this.currentTask = '';
             },
             removeTask: function(index)
@@ -34,14 +36,9 @@ new Vue({
             copyTasks: function()
             {
                 let el = document.createElement('textarea');
-                let counter = 1;
-                // el.value = this.tasks;
                 el.value = '';
                 for (const task of this.tasks) {
-                    el.value += counter + ".";
                     el.value += task;
-                    el.value += "\n";
-                    counter++;
                 }
                 document.body.appendChild(el);
                 el.select();

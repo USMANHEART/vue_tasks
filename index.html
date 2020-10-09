@@ -32,9 +32,7 @@
                 <br><br>
                 <ol class="a">
                     <li v-for="(task, index) in tasks">
-                        {{task.eng}}
-                        <br>
-                        {{task.trans}}
+                        {{task}}
                         <hr>
                         <button class="btn btn-danger" @click="removeTask(index)">
                             Remove
