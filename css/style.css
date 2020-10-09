@@ -11,10 +11,16 @@
     padding: 20px;
     background: #FFEEE4;
   }
-  
-  li {
+  li
+  {
     margin: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  /* .lst:before {
+    counter-increment: section;
+    content: counter(section) ".";
+    position: absolute;
+    margin-left: -20px;
+} */
