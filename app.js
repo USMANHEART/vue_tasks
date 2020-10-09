@@ -29,6 +29,15 @@ new Vue({
                 this.tasks.push(task);
                 this.currentTask = '';
             },
+            taskCompleted: function(index)
+            {
+                if(!this.tasks[index].includes("completed\n"))
+                {
+                    let taskTmp = [...this.tasks];
+                    taskTmp[index] = this.tasks[index].split("\n")[0] + ", completed\n";
+                    this.tasks = taskTmp;
+                }                
+            },
             removeTask: function(index)
             {
                 this.tasks.splice(index, 1);
