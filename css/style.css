@@ -4,12 +4,13 @@
   } */
   .heading{
     text-align: center;
-    /* width: 600px; */
+    width: 1200px;
+    margin: auto;
     border: 2px solid black;
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background: #C5E0FF;
+    background: #b6a9ff;
   }
   .henry_tasks {
     width: 1200px;
