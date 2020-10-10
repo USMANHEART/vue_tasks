@@ -1,7 +1,7 @@
-#app-vue {
+/* #app-vue {
     display: flex;
     justify-content: center;
-  }
+  } */
   .heading{
     text-align: center;
     /* width: 600px; */
@@ -12,16 +12,33 @@
     background: #C5E0FF;
   }
   .henry_tasks {
-    width: 600px;
+    width: 1200px;
     border: 2px solid black;
     display: flex;
     flex-direction: column;
     padding: 10px;
+    margin: auto;
     background: #C5E0FF;
+  }
+  .henry_display {
+    display: flex;
+    width: 1200px;
+    border: 1px solid black;    
+    margin: auto;
+    background: #C5E0FF;
+  }
+  .in_display{
+    flex: 1;
+    border: 1px solid black;
+    padding: 10px;
+  }
+  .in_display:not(:last-child) {
+    border-right: 3px solid black;
   }
   .henry_tasks_float {
     float: center;
     padding: 10px;
+    border: 1px solid black;
   }
   li
   {

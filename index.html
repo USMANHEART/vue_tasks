@@ -15,25 +15,16 @@
         <hr>
         <div class="heading">
             Henry Task Manager
-        </div>
-            
-            <br>
+        </div>    
             <hr>
-        <div id="app-vue" class="henry_tasks_float">            
+        <div id="app-vue">           
             <div class="henry_tasks">
-                <!-- <textarea 
-                name="v-model-task"
-                id="v-model-task"
-                v-on:keyup.enter="addTask"
-                v-model="currentTask"
-                >
-                 v-on:keyup.enter="addTask" 
-                </textarea> -->
                 <input type="text" id="v-model-task" v-model="currentTask" v-on:keyup.enter="addTask">
-                <br>
-                <!-- <button @click="addTask">Add Task</button> -->
-                <br><br>
-                <ul>
+            </div>   
+        <div class="henry_display">
+            <div class="in_display">                              
+                <a>Tasks:</a>
+                <ul style="counter-reset: section;">
                     <li class="lst" v-for="(task, index) in tasks">
                         {{task}}
                         <hr>
@@ -45,12 +36,10 @@
                         </button>
                     </li>
                 </ul>
-            </div>
-            
-            <div class="henry_tasks">
+
                 <a>Completed Tasks:</a>
                 <br>
-                <ul>
+                <ul style="counter-reset: section;">
                     <li class="lst" v-for="(task, index) in compTasks">
                         {{task}}
                         <hr>
@@ -59,24 +48,40 @@
                         </button>
                     </li>
                 </ul>
-                <button @click="copyTasks">Copy All</button>
+                <button @click="copyTasks">Copy English</button>
+
             </div>
 
-            <div class="henry_tasks">
-                <a>Translation:</a>
+            <div class="in_display">
+                <a>任务:</a>
                 <br>
-                <ul>
+                <ul style="counter-reset: section;">
+                    <li class="lst" v-for="(task, index) in transTaskList">
+                        {{task}}
+                        <hr>
+                        <button class="btn btn-primary" @click="taskCompleted(index)">
+                            完整的
+                        </button>
+                        <button class="btn btn-danger" @click="removeTask(index)">
+                            删除
+                        </button>
+                    </li>
+                </ul>
+
+                <a>已完成的任务:</a>
+                <br>
+                <ul style="counter-reset: section;">
                     <li class="lst" v-for="(task, index) in transTasks">
                         {{task}}
                         <hr>
                         <button class="btn btn-danger" @click="returnTask(index)">
-                            Revert
+                            还原
                         </button>
                     </li>
                 </ul>
-                <button @click="copyTransTasks">Copy Translation</button>
+                <button @click="copyTransTasks">复制中文</button>
             </div>
-            
+        </div>
             
         </div>
         <script src="app.js"></script>
