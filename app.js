@@ -7,16 +7,90 @@ new Vue({
                 transTaskList: [],
                 compTasks: [],
                 transTasks: [],
-                currentTask: ''
+                currentTask: '',
+                todayID: 0,
             }
         },
+        mounted(){
+            this.firstLoad()
+        },
         methods: {
-            addTask: function()
+            firstLoad: function()
             {
-                let task = this.currentTask;
+                let path = "http://localhost:8080/today_task";
+                axios.get(path)
+                .then((data) => {
+                    if(data.data)
+                    {
+                        let tasks = data.data.tasks;
+                        this.resetTasks();
+                        tasks = tasks.split("|");
+                        this.addTransTasks(tasks);
+                        for (const task of tasks) 
+                        {
+                            this.addTask(task, false);
+                        }
+                    }
+                });
+            },
+            saveTasks: function()
+            {
+                let allTasks = ""
+                for (var i=0; i<(this.tasks.length); i++) {
+                    let task = this.tasks[i];
+                    if(i==0)
+                    {
+                        allTasks += task;
+                    }
+                    else
+                    {
+                        allTasks += ("|" + task);
+                    }
+                }
+
+                let path = "http://localhost:8080/save_task";
+                let params = {
+                    "tasks": allTasks
+                }
+                axios.post(path, params)
+                .then((response) => {
+                    console.log(response)
+                });
+            },
+            resetTasks: function()
+            {
+                this.tasks = [];
+                this.transTaskList = [];
+            },
+            addTask: function(value = "", translate = true)
+            {
+                let task = (value == "") ? this.currentTask: value;
                 this.tasks.push(task);
-                this.addTransTask(task)
+                if(translate) this.addTransTask(task)
                 this.currentTask = '';
+            },
+            addTransTasks: function(tasks)
+            {
+                let requests = []
+                for (const task of tasks) 
+                {
+                    let params = {
+                        langpair: "en|zh",
+                        q: task
+                    }
+                    let request = `https://api.mymemory.translated.net/get`;
+                    requests.push(axios.get(request, {params}))
+                }                
+
+                axios.all(requests).then(axios.spread((...responses) => {
+                    for (const data of responses) {
+                        let translation = data.data.responseData.translatedText;
+                        this.transTaskList.push(translation);
+                    }                    
+                  })).catch(errors => {
+                    console.error(errors)
+                  })
+                  
             },
             addTransTask: function(task)
             {
@@ -29,6 +103,7 @@ new Vue({
                 .then((data) => {
                     if(data.data){
                         let translation = data.data.responseData.translatedText;
+                        // console.log(task, translation);
                         this.transTaskList.push(translation);
                     }
                 });
@@ -105,7 +180,7 @@ new Vue({
                 el.select();
                 document.execCommand('copy');
                 document.body.removeChild(el);
-                console.log(el.value);                
+                // console.log(el.value);    
             },
             copyTransTasks: function()
             {

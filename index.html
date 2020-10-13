@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <!-- <script>window.onload = firstLoad() </script> -->
+
         <meta charset="utf-8">
         <title>
             Henry Tasks
         </title>
         <script src="node_modules/axios/dist/axios.js"></script>
         <script src="js/vue.js"></script>
-        <script src="js/axios.js"></script>
+        <!-- <script src="js/axios.js"></script> -->
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -21,7 +23,8 @@
             <hr>
         <div id="app-vue">           
             <div class="henry_tasks">
-                <input type="text" id="v-model-task" v-model="currentTask" v-on:keyup.enter="addTask">
+                <!-- <button class="btn btn-danger" @click="firstLoad">Load Todays Tasks</button> -->
+                <input type="text" id="v-model-task" v-model="currentTask" v-on:keyup.enter="addTask('', true)">
             </div>   
         <div class="henry_display">
             <div class="in_display">                              
@@ -84,7 +87,9 @@
                 <button @click="copyTransTasks">复制中文</button>
             </div>
         </div>
-            
+        <div class="henry_tasks">
+            <button class="btn btn-danger" @click="saveTasks">Save Tasks</button>
+        </div>
         </div>
         <script src="app.js"></script>
     </body>
