@@ -2,6 +2,16 @@
     display: flex;
     justify-content: center;
   } */
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+  }
   .heading{
     text-align: center;
     width: 1200px;
